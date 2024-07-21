@@ -26,7 +26,6 @@ export async function removeContact(contactId) {
   const [result] = contacts.splice(index, 1);
   await updateContacts(contacts);
   return result;
-  // ...твій код. Повертає об'єкт видаленого контакту. Повертає null, якщо контакт з таким id не знайдений.
 }
 
 export async function addContact(data) {
@@ -38,14 +37,4 @@ export async function addContact(data) {
   contacts.push(newContact);
   await updateContacts(contacts);
   return newContact;
-}
-export async function updateById(id, data) {
-  const contacts = await listContacts();
-  const index = contacts.findIndex((item) => item.id === id);
-  if (index === -1) {
-    return null;
-  }
-  contacts[index] = { ...contacts[index], ...data };
-  await updateContacts(contacts);
-  return contacts[index];
 }
